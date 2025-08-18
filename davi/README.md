@@ -8,6 +8,8 @@
 nest g module database
 nest g service database
 nest g resource students
+nest g module my-logger
+nest g service my-logger
 
 ##  Prisma 
 - npm install  prisma -D
@@ -19,4 +21,7 @@ npx prisma migrate reset    clear all migrations
 npx prisma generate  // after changing .sql file
 npx prisma migrate dev --name email_unique   // push changing in prisma remote
 
+## dependencies
+npm i @nestjs/throttler
+npm install @nestjs/config
 
