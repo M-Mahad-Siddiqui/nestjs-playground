@@ -1,1 +1,1 @@
-Nestjs Backend with typescript
+This repository is dedicated to learning and experimenting with NestJS (a Node.js framework) using TypeScript. It includes various exercises, tutorials, and experiments as I build and explore different features of the NestJS ecosystem.
