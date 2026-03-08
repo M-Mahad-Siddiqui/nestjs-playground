@@ -7,6 +7,7 @@ export class CustomerController {
 
     @Get()
     getAllCustomer(){
+        console.log('get all customer');
         return this.customerService.getAllCustomer();
     }
 
