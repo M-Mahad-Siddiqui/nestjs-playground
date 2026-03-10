@@ -9,7 +9,7 @@ export class CustomerController {
     @Get()
     // @UseFilters( HttpExceptionFilter  )
     getAllCustomer(){
-        throw new HttpException('Not implemented', 501);
+        // throw new HttpException('Not implemented', 501);
         console.log('get all customer');
         return this.customerService.getAllCustomer();
     }
