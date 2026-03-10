@@ -1,21 +1,21 @@
-import { Body, Controller, Get, HttpException, Post, UseFilters } from '@nestjs/common';
+import { Body, Controller, Get, HttpException, Post, UseFilters, UsePipes } from '@nestjs/common';
 import { CustomerService } from './customer.service';
 import { HttpExceptionFilter } from 'src/exception-filters/http-exception-filters';
+import { myFirstPipes } from 'src/pipes/my-first-pipes';
+import { AddCustomerDto } from './dtos/addcustomer';
  
 @Controller('customer')
 export class CustomerController {
     constructor(private customerService: CustomerService) {}
 
     @Get()
-    // @UseFilters( HttpExceptionFilter  )
     getAllCustomer(){
-        // throw new HttpException('Not implemented', 501);
-        console.log('get all customer');
         return this.customerService.getAllCustomer();
     }
 
     @Post()
-    addCustomer(@Body() customerData: { name: string }){
-        this.customerService.addCustomer(customerData.name);
+    @UsePipes( myFirstPipes )
+    addCustomer(@Body() customerData: AddCustomerDto){
+        return this.customerService.addCustomer(customerData);
     }
 }

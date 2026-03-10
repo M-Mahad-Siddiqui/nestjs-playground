@@ -3,13 +3,20 @@ import { Injectable, Scope } from "@nestjs/common";
 @Injectable({scope:Scope.REQUEST})
 export class CustomerService {
 
-    customer: string[] = [];
+    customers: any[] = [];
 
-    addCustomer(name:string):void{
-        this.customer.push(name);
+    addCustomer(customerData: any): { message: string; data: any } {
+        this.customers.push(customerData);
+        return {
+            message: 'Customer added successfully',
+            data: customerData,
+        };
     }
 
-    getAllCustomer(){
-        return this.customer;
+    getAllCustomer(): { message: string; data: any[] } {
+        return {
+            message: 'Customers fetched successfully',
+            data: this.customers,
+        };
     }
 }
