@@ -1,9 +1,8 @@
 import { Body, Controller, Get, HttpException, Post, UseFilters, UseGuards, UsePipes } from '@nestjs/common';
 import { CustomerService } from './customer.service';
-import { HttpExceptionFilter } from 'src/exception-filters/http-exception-filters';
 import { myFirstPipes } from 'src/pipes/my-first-pipes';
 import { AddCustomerDto } from './dtos/addcustomer';
-import { authenticationsGuards } from 'src/guards/authentications.guards';
+import { AuthenticationGuard } from 'src/guards/authentications.guards';
  
 @Controller('customer')
 export class CustomerController {
@@ -15,8 +14,8 @@ export class CustomerController {
     }
 
     @Post()
-    @UseGuards( authenticationsGuards )
-    @UsePipes( myFirstPipes )
+    @UseGuards(AuthenticationGuard)
+    @UsePipes(myFirstPipes)
     addCustomer(@Body() customerData: AddCustomerDto){
         return this.customerService.addCustomer(customerData);
     }
