@@ -3,8 +3,8 @@ import { Injectable, PipeTransform } from "@nestjs/common";
 @Injectable()
 export class myFirstPipes implements PipeTransform{
     transform(value: any, ...args: any[]): any {
-        console.log('value: ', value);
-        console.log('args: ', args);
+        console.log('value : ', value);
+        console.log('args : ', args);
         if (typeof value === 'string') {
             return value.toUpperCase();
         }
