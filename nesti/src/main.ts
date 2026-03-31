@@ -4,6 +4,7 @@ import middleware1 from './middlers/middleware1';
 import { middleware2 } from './middlers/middleware2';
 import { HttpExceptionFilter } from './exception-filters/http-exception-filters';
 import { ValidationPipe } from '@nestjs/common';
+import { CustomInterceptor } from './interceptors/customIntercepter.interceptor';
 
 async function bootstrap() {
 
@@ -12,6 +13,7 @@ async function bootstrap() {
   app.use(middleware2);
   app.useGlobalFilters(new HttpExceptionFilter());
   app.useGlobalPipes(new ValidationPipe());
+  app.useGlobalInterceptors(new CustomInterceptor());
   await app.listen(process.env.PORT ?? 3000);
 }
 bootstrap();
